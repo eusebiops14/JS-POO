@@ -197,3 +197,25 @@ JAVA SCRIPT: POO
         -- Os métodos estáticos são normalmente utilizados para chamadas de métodos internos de frameworks e 
            bibliotecas, ou em qualquer caso que a classe não dependa de instâncias específicas.
         -- Exemplos: https://cursos.alura.com.br/course/javascript-passos-programacao-orientada-objetos/task/103438
+
+4) Encapsulamento
+    4.2) Atibutos Privados
+        -- preservar informações sensíveis
+        -- Atributos privados sao aqueles que só podem ser acessados por funcoes que estao dentro da Classe.
+            - Não podem ser acessados a partir de fora da classe
+        -- Classes privadas são recentes no Node - feature nova
+    
+    4.4) Atributos Privados com _ 
+        -- Até recentemente, o JavaScript não tinha a opção de usar atributos privados com #. Ao invés disso,
+           atributos privados tinham um _ como prefixo como convenção, indicando se tratar de atributos privados.
+        -- Como “convenção”, podemos entender como um “acordo”; a comunidade dev adotou a sintaxe _variavel (com o _ antes do nome) como um aviso no
+           código de que trata-se de uma propriedade ou método privado, que não deve ser chamado ou modificado fora da classe. Porém incluir o _ não produz
+           nenhuma modificação sintática no código.
+           Ou seja, os atributos na prática continuam se comportando como propriedade ou método normal (público) e ainda podem ser acessados livremente. 
+        -- Lembrando que: propriedades e métodos públicos são aqueles que podem ser acessados a partir de qualquer parte do código; os privados
+           são acessados apenas “por dentro” da classe.
+        -- Exemplos : https://cursos.alura.com.br/course/javascript-passos-programacao-orientada-objetos/task/103425
+        -- Getters and Setters
+    
+    4.5) Métodos Privados 
+        -- 
