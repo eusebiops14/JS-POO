@@ -1,0 +1,199 @@
+JAVA SCRIPT: POO
+
+1) Entendendo a orientação a objetos
+
+    1.3) Conceito de OO 
+
+        -- Paradigmas de programação -  Abordagens sobre como resolver problemas de programação,
+        baseadas em uma teoria ou um conjunto de princípios definidos.
+        -- Alguns paradigmas:
+            - Imperativo (POO e programação estruturada)
+            - Relacional (Bancos de dados)    
+            - Declarativo
+        -- Orientação a objetos: princípio de espelhar o mundo real através de uma estrutura de objetos com características e 
+        ações, que interagem uns com os outros.
+            - estrutura central da OO : classes (são moldes para criação de objetos)
+            - propriedades e métodos(funções executadas dentro de um objeto) 
+            - transformar aspectos da vida real em software para resolver problemas
+        -- Princípios da OO :
+            - Classe;
+            - Objeto;
+            - Herança;
+            - Polimorfismo;
+            - Encapsulamento
+    
+    1.4) Modelando o projeto
+        -- UML -Unified Modeling Language - Linguagem unificada de modelagem - forma de desenvolver diagramas
+            - Um dos diagramas mais comuns de ser representado utilizando a UML é o diagrama de classe. A função
+              dele é representar as estruturas e relações entre as classes de um projeto e interfaces com outros
+              sistemas.
+            - https://plantuml.com (link para site onde é possivel criar os diagramas em UML)
+        -- Objeto literal : Um objeto literal é “único”, no sentido de que guarda dados específicos, já definidos
+           (por exemplo, os dados de um produto) e não pode ser utilizado como classe para a criação de outros
+           objetos a partir dele.
+        -- https://cursos.alura.com.br/course/javascript-passos-programacao-orientada-objetos/task/103407
+        -- date : https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Date
+
+2) Funções e Protótipos
+    2.2) Orientação a Objetos com javascript
+        -- Classes surgem no JS a partir da ES6. Antes disso, a OO do JS baseava-se em funções e não em classes.
+        -- Herança de Protótipo: era a forma como o JS foi pensado para trabalhar com OO antes da introdução das classes na linguagem.
+            - Herança de protótipo é algo bastante particular do JavaScript
+            - O conceito de classe dentro do JS foi implementado a partir da herença de protótipos.
+    
+    2.3) Entendento o this 
+        -- this faz referencia a um contexto (Objeto) específico.
+        -- usamos bind() para ligar (bind) o valor de this a um determinado contexto.
+    
+    2.4) Call e Apply
+        -- call() and apply() : https://cursos.alura.com.br/course/javascript-passos-programacao-orientada-objetos/task/103416
+
+    2.5) Function vs Arrow Function
+        -- a arrow function difere da function usual em alguns pontos, sendo o mais importante para nós nesse momento 
+           a questão do this.
+        -- A primeira diferença entre a declaração de função e as expressões de função é o hoisting. Mas, além do
+           hoisting, existe outra diferença principal entre declaração de função e arrow function: ao contrário das
+           funções normais, arrow functions herdam automaticamente o contexto de onde foram criadas e não têm seu
+           próprio “contexto de invocação”. Ou seja, não podem ser ligadas a contextos específicos com this e nem fazer
+           uso dos métodos bind(), call() e apply().
+        -- Arrow functions também não possuem a propriedade prototype e por isso não podem ser usadas como funções
+           construtoras - assunto que veremos em seguida. Por este motivo, não usamos arrow functions em nenhum
+           momento para a criação de métodos durante o curso.
+        -- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions
+
+    2.6) Herança de protótipo
+        -- Era a forma original do JS de trabalhar com OO antes do ES6.
+        -- Protótipos são a forma como o JS permite que objetos herdem recursos uns dos outros.
+        -- Object.setPrototypeOf(objetoFilho,objetoPai)
+            - com esse código, o objeto filho passa a herdar as propriedades e os métodos do objeto pai 
+            - dizemos que o objeto pai é um protótipo do objetoFilho
+            - cadeia de protótipos - objetos filhos podem herdar propriedades dos objetos pai que foram herdadas de outro objeto (avô)
+               formando assim uma cadeia de protótipos.
+    
+    2.7) Cadeia de protótipos - Herança de protótipos
+        -- Objeto pai de todos os objetos do JS é o Object .
+        -- Suponha que tenhamos definido: Object.setPrototypeOf(objetoFilho,objetoPai)
+            - a partir disso, se executarmos (no navegador) o comando objetoFilho.__proto__ ,
+             o navegador retornará o objeto pai. 
+            - objetoFilho.__proto__.__proto__ retorna Object 
+            - objetoFilho.__proto__.__proto__.__proto__ retorna NULL
+        -- HOJE EM DIA NÃO USAMOS MAIS ESSA MANEIRA DE PASSAR HERANÇA NO JS, SUSBTITUIMOS POR CLASSES.
+        -- Quando usamos objetos e funções para trabalhar com orientação a objetos com JavaScript, os objetos
+            criados não são instâncias diferentes (ou seja, cópias do objeto-base)
+            e sim referências a um mesmo objeto que está sendo delegado aos objetos que o usam como protótipo.
+        -- Em resumo:
+            __proto__ é uma propriedade que todos os objetos têm e que aponta para o protótipo que foi definido para aquele objeto.
+            prototype é uma propriedade da função que é definida como protótipo quando usamos new para criar novos objetos.
+    
+    2.9) resumo
+        -- Protótipo vs prototype
+            Praticamente todos os dados criados em JavaScript (objetos, arrays, etc) têm um protótipo, 
+            porém apenas alguns deles têm a propriedade prototype. São estes objetos que contêm a propriedade
+            prototype que acessamos com Object.prototype, Array.prototype e etc durante o vídeo, que definem os 
+            protótipos para todos os outros acima na cadeia.
+            Ou seja, todos os objetos criados a partir de Object, Array, String, etc, têm um protótipo 
+            que foi “herdado” destes, mas não necessariamente têm uma propriedade prototype.
+        -- __proto__ será DESCONTINUADO.
+        -- Não altere o prototype pois isso pode afetar a performance do código.
+        -- Todas as propriedades de uma cadeia de protótipos são enumeradas e o tempo que o interpretador
+           leva para pesquisar uma propriedade, desde o nível mais alto na cadeia, pode ser longo e impactar o 
+           desempenho. Além disso, se o código tentar acessar uma propriedade não existente, vai percorrer toda
+            a cadeia durante a busca. Assim, não é uma boa prática criar longas cadeias de protótipos.
+
+    2.10) Object.create() vs new
+        -- new é uma palavra chave usada para criar novos objetos a partir de um construtor
+        -- as funções construtoras são o equivalente no JS às classes de outras linguagens de Programação OO 
+        -- funções construtoras eram a forma como JS trabalhava com OO antes da implementação das classes na linguagem.
+        -- Ver anotaçoes no arquivo new.JS
+        -- Na vida real não utilizamos os prototipos mas sim as classes 
+    
+    2.11) Factory Functions vs Funções Construtoras 
+        -- Uma factory function (“função fábrica”) é como chamamos, em JavaScript, uma função que retorna um objeto:
+            
+            function criaUser(nome, email) {
+             return {
+               nome,
+               email,
+               exibeInfos() {
+                 return `${nome}, ${email}`
+               }
+             }
+            }
+
+            const newUser = criaUser('Rodrigo', 'r@r.com')
+            console.log(newUser)
+            console.log(newUser.exibeInfos())
+
+        -- Exemplo de função construtora:
+
+            function User(nome, email) {
+             this.nome = nome
+             this.email = email
+
+             this.exibeInfos() {
+               return `${nome}, ${email}`
+             }
+            }
+            
+            - As funções construtoras devem ser chamadas com o operador new para criar instâncias do objeto User:
+
+            const newUser = new User('Mariana', 'm@m.com')
+            console.log(newUser)
+            console.log(newUser.exibeInfos())
+        -- A sintaxe de classe não existia no JavaScript até o ES6, e foi implementada como “açúcar sintático” 
+            por cima do modelo de protótipo nativo do JavaScript. Isso aconteceu por, entre outros fatores, uma 
+            demanda da comunidade dev que já estava acostumada a utilizar classes em orientação a objetos e preferia
+            essa forma a ter que utilizar os protótipos.
+        -- A palavra-chave this se refere ao contexto em que uma função está sendo executada; esse contexto só 
+            é determinado no momento da chamada da função e só é possível saber qual será o valor de this para
+            uma função se soubermos em que contexto esta função será executada - em outras palavras, a que objeto
+            ela fará referência.
+
+3) CLASSES E HERANÇA
+    3.2) Estrutura da Classe (Arquivo User.js)
+        -- elas não existiam nas primeiras versões do JavaScript, e elas são açúcar sintático, uma camada de abstração
+           em cima do modelo de protótipos.
+        -- constructor é uma funcào especial dentro da classe 
+    
+    3.3) Herança de Classe
+        -- Ver arquivo Admin.js
+    
+    3.4) Módulos no Node
+        -- Quando trabalhamos com NodeJS, é comum usarmos arquivos diferentes para separar
+           e organizar o código. Cada arquivo .js é um módulo independente e suas funções, 
+           variáveis e classes não são compartilhados com o restante do código, a não ser 
+           quando são explicitamente exportados e importados em outros módulos.
+           O JavaScript, em seus diversos interpretadores, faz a importação/exportação de
+           módulos de duas formas, usando a sintaxe CommonJS ou CJS ou a sintaxe EcmaScript
+           Modules, ou ESM. 
+        -- CommonJS, ou CJS
+            -Até a versão 13, a função que o NodeJS utiliza por padrão para importar módulos em
+              um arquivo é require(). Os módulos podem importar e exportar todas as funções declaradas
+              o arquivo ou apenas algumas, de acordo com o necessário. Este é o formato de exportação
+              e importação de módulos conhecido como CommonJS ou CJS. É possível exportar apenas a função
+              que precisa ser executada a partir de outra parte do código, enquanto outras funções do
+              mesmo arquivo permanecem inacessíveis ao restante.
+        -- EcmaScript Modules, ou ESM
+            - Quando utilizamos o ESM, o mesmo processo de exportação de módulos é feito com a sintaxe 
+              export ou export default e a importação com a sintaxe import <nomeModulo> from ‘./caminho/arquivo.js’.
+              Esta outra forma de lidar com a importação e exportação de módulos veio com o famoso ES6 
+              ou JS2015 e foi aos poucos sendo implementada para funcionar nativamente nos navegadores com a ajuda de
+              bundlers como o WebPack, que fazem a “tradução” de métodos do JavaScript mais moderno para garantir
+              retrocompatibilidade.
+        -- Classes nao tem hoisting
+        -- Classes seguem o strict Mode 
+    
+    3.6) Strict Mode
+        -- O modo estrito do JavaScript serve para impedir que alguns comportamentos
+           do JavaScript causem “falhas silenciosas” (transformando em erros que são lançados
+           pelo interpretador) e corrigir alguns outros que podem induzir a bugs potenciais e 
+           comportamentos inesperados.
+        -- Para usar o mode estrito basta colocar no inicio do arquivo do código : "use estrict"
+    
+    3.7) Métodos Estáticos
+        -- Quando criamos uma classe, é possível designar que determinados métodos sejam estáticos.
+           Ou seja, estes métodos não são inicializados quando criamos uma nova instância de classe (usando new),
+           mas sim a partir da própria classe.
+        -- Os métodos estáticos são normalmente utilizados para chamadas de métodos internos de frameworks e 
+           bibliotecas, ou em qualquer caso que a classe não dependa de instâncias específicas.
+        -- Exemplos: https://cursos.alura.com.br/course/javascript-passos-programacao-orientada-objetos/task/103438
