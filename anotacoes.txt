@@ -218,4 +218,63 @@ JAVA SCRIPT: POO
         -- Getters and Setters
     
     4.5) Métodos Privados 
-        -- 
+        -- #nomeDoMetodo()
+        -- São excelentes para proteger propriedades sensíveis da classe, impedindo que sejam acessadas a partir de fora da classe de origem
+        -- Mesmo as subclasses (que herdam propriedades) não tem acesso às propriedades privadas da classe pai 
+    
+    4.6) Getters
+        -- Métodos que servem de porta de comunicacao entre o interior da classe e o restante do código
+        -- Propriedades Acessors 
+        -- Palavra chave get - torna o método do tipo somente leitura
+        -- funçõao/método Getter 
+            - Nunca recebem argumentos na chamada da função 
+            - Apenas retornam valores - são do tipo somente leitura
+            - Apesar da sintaxe de funcào, na hora de chamar a funcao getter, chamamos como se fosse uma propriedade Obj.nomeDaFuncao
+    
+    4.7) Setters
+        -- Função set aceita apenas um parametro;
+        -- Assim como no caso das funções getter, as funções setters sào chamadas como se fossem
+            propriedades (nomeDoObjeto.NomeDaFuncãoGetter);
+        -- No exemplo da aula, colocamos o mesmo nome para ambas as funcoes getter e setter relacionadas com
+            o atributo 'nome' da classe User. Isso é feito pois torna mais simples na hora de chamar a funcao
+            getter ou setter. 
+        -- setters são utilizados para fazer alterações em um classe já definida
+        -- São usadas para encapsular código
+    
+    4.10) Getters/ Setters vs Funções 
+        -- exemplo de código onde, ao invés de get e set, foram utilizadas funções para esse papel:
+            class User {
+                 _nome = '';
+                
+                setNome(nome) {
+                   this._nome = nome;
+                }
+                
+                getNome() {
+                   return this._nome;
+                }
+            }
+        -- É possível usar métodos como assessors, como visto acima. Porém, há algumas vantagens na utilização de get/set:
+           Apesar de serem métodos, a sintaxe para uso do get e set é a mesma que utiilizamos para acessar/modificar
+           propriedades públicas normalmente, o que faz sentido com a ideia do encapsulamento de “expôr” somente o que é
+           necessário da classe. Por outro lado, na forma acima, os métodos são acessados com a sintaxe usual de execução de 
+           função (usando parênteses).
+           Por exemplo, usando funções como assessors teríamos as seguintes chamadas de método:
+            
+            const nome = novoUser.getNome() //getter
+            novoUser.setNome('Pedro') //setter
+            novoUser.exibeInfos() // método normal
+
+            Utilizando get e set:
+
+            const nome = novoUser.nome //getter
+            novoUser.nome = 'Pedro' //setter
+            novoUser.exibeInfos() // método normal
+
+        -- Dessa forma, o uso de get/set ajuda na legibilidade.
+
+            Além disso, os assessor têm, em si mesmos, limitações quanto aos parâmetros aceitos: get não
+            aceita nenhum parâmetro e set apenas um parâmetro (referente ao dado que será definido), o que 
+            ajuda a garantir que não irão receber parâmetros “inesperados” que podem causar bugs. O mesmo 
+            comportamento pode ser implementado em métodos normais, por meio de validações, porém isso torna
+            o desenvolvimento menos ágil.
