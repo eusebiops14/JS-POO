@@ -12,5 +12,9 @@ const novoAdmin = new Admin('Rodrigo', 'r@r','2021-01-01');
 console.log(novoAdmin.exibirInfos());
 console.log(novoAdmin.nome); //acessa atraves do getter
 
-novoAdmin.nome = '';
+novoAdmin.nome = 'admNew';
 console.log(novoAdmin.nome); // para a funcao getter relacionada ao atributo nome, usamos o mesmo nome que a funcao getter para facilitar na hora de chamar ambas as funções 
+
+
+const novoDocente = new Docente('Guilherme','g@g.com','2021-01-01');
+console.log(novoDocente.exibirInfos())

@@ -278,3 +278,44 @@ JAVA SCRIPT: POO
             ajuda a garantir que não irão receber parâmetros “inesperados” que podem causar bugs. O mesmo 
             comportamento pode ser implementado em métodos normais, por meio de validações, porém isso torna
             o desenvolvimento menos ágil.
+
+    5) Polimorfismo e SOLID
+
+        5.2) Polimorfismo
+            -- A mesma funcao com a mesma assinatura apresenta comportamentos diferentes.
+        
+        5.3) SOLID
+            -- Conjunto de design Pattern para orientação a objeto
+            -- S : Single Responsability principle - Cada modulo trata apenas uma entidade
+               O : Open/Closed Principle - Classe tem que estar aberta para ser expandida mas fechada para ser modificada
+                    - deve ser possivel adicionar mas nao alterar metodos da classe
+                    - não mexer no que já está funcionando
+                    - ligado ao conceito de interfaces (do typescript)
+               L : Liskov Substitution Principle 
+                    - Barbara Liskov foi uma cientista da computação que formalizou esse principio
+                    - Se temos uma subclasse e uma superclasse, deve ser possivel substituir uma pela outra sem que nada pare de funcionar
+                    - Uma subclasse não pode quebrar contratos feitos pela superClasse;
+               I : Interface Segregation Principle 
+                    - Não se pode impor uma implementação de algo que não será utilizado na classe 
+                    - Como JS não tem interfaces, esse princípio não pode ser aplicado diretamente 
+               D: Dependency Inversion Principle 
+                    - Módulos que estão acima na hierarquia de herança não podem depender de nada que esteja 
+                        abaixo deles;
+                    - Não podem depender de implementacoes mas sim abstracoes
+                    - Relacionado ao emcapsulamento
+                    - Usuario comum que usa um pc não precisa saber dados de funcionamento internos do hardware
+        5.4) Interfaces 
+            --  o JavaScript é uma linguagem fracamente tipada (você pode ver mais sobre tipagem neste artigo). 
+            Por conta disso, o JavaScript não possui suporte e não trabalha com interfaces,
+            que é um conceito próprio da orientação a objetos e normalmente aplicado em 
+            linguagens compiladas e fortemente tipadas. Vamos entender melhor?
+            As interfaces possuem um papel muito importante na programação orientada a objetos,
+            uma vez que esse paradigma é baseado na ideia de que os objetos apresentam uma 
+            interação entre si. Nesse sentido, as interfaces de um objeto funcionam 
+            como uma coleção de métodos pelos quais é possível realizar essas interações.
+            O uso de interfaces é útil para validar e documentar a forma que os objetos serão passados
+            como parâmetros e objetos retornados de funções, assim como suas propriedades. É indiscutível
+            que essa prática irá garantir a detecção de erros mais
+            rapidamente pois você não precisará buscá-los após o runtime da sua aplicação.
+            -- https://cursos.alura.com.br/course/javascript-passos-programacao-orientada-objetos/task/103415
+            
